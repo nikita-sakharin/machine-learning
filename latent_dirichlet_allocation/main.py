@@ -36,7 +36,7 @@ def latent_dirichlet_allocation(X, k: int=20,
                 (n_w_k[word[i], k_] + beta) / \
                 (n_k[k_] * beta * w)
                 for k_ in range(k)]
-            topic[i] = choices(range(k), p)
+            topic[i] = choices(range(k), p)[0]
             n_d_k[doc[i], topic[i]] += 1
             n_w_k[word[i], topic[i]] += 1
             n_k[topic[i]] += 1
