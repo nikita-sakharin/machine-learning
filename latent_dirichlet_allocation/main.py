@@ -18,7 +18,7 @@ def latent_dirichlet_allocation(X, k: int=20,
         alpha: float=0.02, beta: float=0.1, max_iter: int=500):
     if not ((isinstance(X, np.matrix) or isinstance(X, np.ndarray))
             and isinstance(k, int)):
-        raise TypeError('X must be matrix and k must int')
+        raise TypeError('X must be matrix or ndarray and k must int')
     if X.shape[0] == 0 or X.shape[1] == 0 or k <= 0:
         raise ValueError('all of X.shape[0], X.shape[1] and k must be positive')
 
