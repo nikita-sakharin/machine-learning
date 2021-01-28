@@ -45,9 +45,10 @@ def latent_dirichlet_allocation(X, k: int=20,
 def random_init(X, k: int):
     doc, word, topic = [], [], []
     for row, col in zip(*X.nonzero()):
-        doc.append(row)
-        word.append(col)
-        topic.append(randint(0, k - 1))
+        for i in range(X[row, col]):
+            doc.append(row)
+            word.append(col)
+            topic.append(randint(0, k - 1))
 
     n_d_k = np.zeros(shape=(X.shape[0], k), dtype=int)
     n_w_k = np.zeros(shape=(X.shape[1], k), dtype=int)
