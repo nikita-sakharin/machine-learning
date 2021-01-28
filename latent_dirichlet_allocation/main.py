@@ -67,7 +67,7 @@ with open('test.txt', 'rt') as file:
 
 X, vocabulary = count_vectorizer(lines)
 k = 20
-doc, word, topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X, k=k)
+topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X, k=k)
 for j in k:
     print(F'in topic {j}:')
     for i in n_w_k[:, j].argsort()[-10:]:
