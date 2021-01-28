@@ -14,8 +14,8 @@ def count_vectorizer(lines: list):
             X[i, word2index[word]] += 1
     return X, vocabulary
 
-def latent_dirichlet_allocation(X:np.matrix, k:int=20,
-        alpha:float=0.02, beta:float=0.1, max_iter:int=500):
+def latent_dirichlet_allocation(X: np.matrix, k: int=20,
+        alpha: float=0.02, beta: float=0.1, max_iter: int=500):
     if not ((isinstance(X, np.matrix) or isinstance(X, np.ndarray))
             and isinstance(k, int)):
         raise TypeError('X must be matrix and k must int')
@@ -42,7 +42,7 @@ def latent_dirichlet_allocation(X:np.matrix, k:int=20,
             n_k[topic[i]] += 1
     return topic, n_d_k, n_w_k, n_k
 
-def random_init(X:np.matrix, k:int):
+def random_init(X: np.matrix, k: int):
     doc, word, topic = [], [], []
     for row, col in zip(*X.nonzero()):
         doc.append(row)
