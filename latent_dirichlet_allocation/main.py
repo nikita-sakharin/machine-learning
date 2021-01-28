@@ -8,7 +8,7 @@ def count_vectorizer(lines: list):
         vocabulary |= set(document)
     vocabulary = sorted(vocabulary)
     word2index = {vocabulary[i]: i for i in range(len(vocabulary))}
-    X = np.zeros((len(documents), len(vocabulary)))
+    X = np.zeros(shape=(len(documents), len(vocabulary)), dtype=int)
     for i in range(len(documents)):
         for word in documents[i]:
             X[i, word2index[word]] += 1
@@ -49,9 +49,9 @@ def random_init(X, k: int):
         word.append(col)
         topic.append(randint(0, k - 1))
 
-    n_d_k = np.zeros(shape=(X.shape[0], k))
-    n_w_k = np.zeros(shape=(X.shape[1], k))
-    n_k = np.zeros(shape=(k))
+    n_d_k = np.zeros(shape=(X.shape[0], k), dtype=int)
+    n_w_k = np.zeros(shape=(X.shape[1], k), dtype=int)
+    n_k = np.zeros(shape=(k), dtype=int)
 
     for i in range(len(topic)):
         n_d_k[doc[i], topic[i]] += 1
