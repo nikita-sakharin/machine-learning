@@ -65,7 +65,8 @@ with open('movies-pp.txt', 'rt') as file:
     lines = lines[1:]
 
 X, vocabulary = count_vectorizer(lines)
-topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X)
+k = 20
+topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X, k=k)
 for j in range(k):
     print(F'in topic {j}:')
     for i in n_w_k[:, j].argsort()[-1:-10:-1]:
