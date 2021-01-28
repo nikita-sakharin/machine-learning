@@ -60,10 +60,15 @@ def random_init(X, k: int):
 
     return doc, word, topic, n_d_k, n_w_k, n_k
 
-with open('movies-pp.txt', 'rt') as file:
+with open('test.txt', 'rt') as file:
     lines = file.readlines()
     assert int(lines[0]) + 1 == len(lines)
     lines = lines[1:]
 
 X, vocabulary = count_vectorizer(lines)
-doc, word, topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X)
+k = 20
+doc, word, topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X, k=k)
+for j in k:
+    print(F'in topic {j}:')
+    for i in n_w_k[:, j].argsort()[-10:]:
+        print(F'\t{vocabulary[i]}: {n_w_k[i, j]}')
