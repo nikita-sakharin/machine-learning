@@ -14,7 +14,7 @@ def count_vectorizer(lines: list):
             X[i, word2index[word]] += 1
     return X, vocabulary
 
-def latent_dirichlet_allocation(X: np.matrix, k: int=20,
+def latent_dirichlet_allocation(X, k: int=20,
         alpha: float=0.02, beta: float=0.1, max_iter: int=500):
     if not ((isinstance(X, np.matrix) or isinstance(X, np.ndarray))
             and isinstance(k, int)):
