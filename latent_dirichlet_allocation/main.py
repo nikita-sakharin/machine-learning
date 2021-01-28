@@ -71,5 +71,5 @@ k = 3
 topic, n_d_k, n_w_k, n_k = latent_dirichlet_allocation(X, k=k)
 for j in range(k):
     print(F'in topic {j}:')
-    for i in n_w_k[:, j].argsort()[-10:]:
+    for i in n_w_k[:, j].argsort()[-1:-10:-1]:
         print(F'\t{vocabulary[i]}: {n_w_k[i, j]}')
