@@ -42,7 +42,7 @@ def latent_dirichlet_allocation(X, k: int=20,
             n_k[topic[i]] += 1
     return topic, n_d_k, n_w_k, n_k
 
-def random_init(X: np.matrix, k: int):
+def random_init(X, k: int):
     doc, word, topic = [], [], []
     for row, col in zip(*X.nonzero()):
         doc.append(row)
